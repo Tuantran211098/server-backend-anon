@@ -40,18 +40,7 @@ const corsOptions = {
 
 // Sử dụng middleware CORS
 app.use(cors(corsOptions));
-// ✅ Đảm bảo mọi response có `Access-Control-Allow-Origin`
 
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  if (whitelist.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  next();
-});
 // API route ví dụ
 app.get('/api/test', (req, res) => {
   res.json({ message: 'Hello from backend' });
