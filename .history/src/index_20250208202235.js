@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const dotenv = require('dotenv');
+const dotenv = require('dotenv').config()
 const { connectBrandCategoryDB, connectCategoryDB, connectProductDB, connectTagProductDB } = require('./config/db'); // Import các hàm kết nối
-const routes = require('./routes/index');
+const routes = require('./routes/index')
 var bodyParser = require('body-parser');
 const { default: mongoose } = require('mongoose');
 const helmet = require('helmet');
@@ -13,6 +13,8 @@ dotenv.config();
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+
+
 
 // Routes
 
@@ -106,7 +108,7 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
 });
-
+// Export đúng format cho Vercel
 
 
 
