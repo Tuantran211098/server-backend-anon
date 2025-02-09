@@ -63,7 +63,7 @@ const getAllBrands = (query) => {
     return new Promise(async (resolve, reject) => {
         try {
             console.log('query', query);
-            const _limit = query?._limit || 11;
+            const _limit = query?._limit || 10;
             const _page = query?._page || 1;
             const skip = (_page - 1) * _limit;
             const getAll = await Brands.find().sort({ _id: -1 }).skip(skip).limit(parseInt(_limit));
